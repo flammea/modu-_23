@@ -32,3 +32,33 @@ export function addNote(req, res) {
       });
   });
 }
+
+export function editNote(req, res) {
+  Note.findOne({ id: req.params.noteId }).exec((err, note) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+
+    note.task = req.body.task;
+
+    note.save((err, saved) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json(saved);
+    });
+  });
+}
+
+
+export function deleteNote(req, res) {
+  Note.findOne({ id: req.params.noteId }).exec((err, note) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+
+    note.remove(() => {
+      res.status(200).end();
+    });
+  });
+}
