@@ -15,9 +15,8 @@ export default class Edit extends Component {
       this.props.onUpdate(value.trim());
     }
   }
-
   renderDelete = () => {
-    return <button className={styles.delete} onClick={this.props.onDelete}>×</button>;
+    return <button className={styles.delete} onClick={this.props.onDelete}>X</button>;
   }
 
   renderValue = () => {
@@ -30,21 +29,20 @@ export default class Edit extends Component {
       </div>
     );
   }
-  
+
   renderEdit = () => {
     return (
       <input
-         type="text"
-         autoFocus
-         defaultValue={this.props.value}
-         onBlur={this.finishEdit}
-         onKeyPress={this.checkEnter}
+        type="text"
+        autoFocus
+        defaultValue={this.props.value}
+        onBlur={this.finishEdit}
+        onKeyPress={this.checkEnter}
       />
     );
   }
 
   render() {
-
     return (
       <div className={this.props.className}>
         {this.props.editing ? this.renderEdit() : this.renderValue()}
@@ -59,4 +57,5 @@ Edit.propTypes = {
   onValueClick: PropTypes.func,
   onDelete: PropTypes.func,
   editing: PropTypes.bool,
+  className: PropTypes.string,
 };
