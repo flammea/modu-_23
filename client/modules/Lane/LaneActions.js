@@ -1,4 +1,6 @@
 import uuid from 'uuid';
+import { createNotes } from '../Note/NoteActions';
+
 
 // Export Constants
 export const CREATE_LANE = 'CREATE_LANE';
@@ -35,6 +37,6 @@ export function deleteLane(laneId) {
 export function editLane(laneId) {
   return {
     type: EDIT_LANE,
-    laneId,
+    id: laneId,
   };
 }

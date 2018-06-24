@@ -1,4 +1,4 @@
-import { CREATE_LANE, UPDATE_LANE, DELETE_LANE, EDIT_lANE } from './LaneActions';
+import { CREATE_LANE, UPDATE_LANE, DELETE_LANE, EDIT_LANE } from './LaneActions';
 import { CREATE_NOTE, DELETE_NOTE } from '../Note/NoteActions';
 
 
@@ -14,16 +14,16 @@ export default function lanes(state = initialState, action) {
     		return lane.id === action.id ? { ...lane, ...action.lane } : lane;
   		});
 
-    case EDIT_LANE: {
-      const lane = { ...state[action.laneId], editing: true };
-        return { ...state, [action.laneId]: lane };
-      };
+     case EDIT_LANE: {
+      const lane = { ...state[action.id], editing: true };
+      return { ...state, [action.id]: lane };
+    	}
 
   	case DELETE_LANE:
   		return state.filter(lane => lane.id !== action.laneId);
 
   	case CREATE_NOTE:
-	  return state.map(lane => {
+	   return state.map(lane => {
 	    if (lane.id === action.laneId) {
 	      const notes = [...lane.notes, action.note.id];
 	      return { ...lane, notes };
@@ -31,11 +31,12 @@ export default function lanes(state = initialState, action) {
 	    	return lane;
 	  	});
 
-	case DELETE_NOTE: {
+	   case DELETE_NOTE: {
       const newLane = { ...state[action.laneId] };
       newLane.notes = newLane.notes.filter(noteId => noteId !== action.noteId);
 
       return { ...state, [action.laneId]: newLane };
+      };
     
     default:
       
