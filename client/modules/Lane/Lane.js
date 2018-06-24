@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import NotesContainer from '../Note/NotesContainer';
 import Edit from '../../components/Edit';
+
 import styles from './Lane.css';
 
 const Lane = (props) => {
@@ -39,7 +40,6 @@ Lane.propTypes = {
   updateLane: PropTypes.func,
   deleteLane: PropTypes.func,
   editLane: PropTypes.func,
-
 };
 
 export default Lane;
