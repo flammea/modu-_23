@@ -2,7 +2,7 @@
 
 
 .Lane {
-  background: rgba(0,0,0,0.6);
+  background: #485460;
   border-radius: 10px;
   margin: 40px 10px;
   width: 370px;
@@ -22,10 +22,10 @@
 .LaneDelete button {
   width: 20px;
   height: 20px;
-  border: 2px solid #fff;
+  border: 2px solid #FF7764;
   border-radius: 50%;
-  background: rgb(254, 180, 37);
-  color: #fff;
+  background-color: #0D0F10;
+  color: #FF7764;
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
@@ -33,10 +33,11 @@
 
 .LaneName {
   text-align: left;
-  border-bottom: 3px solid rgb(254, 180, 37);
   padding: 20px;
-  background: rgba(0,0,0,0.7);
+  background: #0D0F10;
   border-radius: 10px 10px 0 0;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .LaneName span {
@@ -49,8 +50,8 @@
 }
 
 .AddLane, .LaneAddNote button {
-  background-color: #242424;
-  color: rgb(247, 247, 247);
+  background-color: #00BFFF;
+  color: #FFFFFF;
   padding: 5px 10px;
   font-size: 15px;
   width: 160px;
@@ -59,9 +60,10 @@
   text-align: center;
   cursor: pointer;
   margin-left: 10px;
-  border-radius: 3px;
+  border-radius: 2px;
   margin: 0 auto;
   display: block;
+  border: 2px solid #FF7764;
 }
 
 .AddLane {
@@ -71,8 +73,9 @@
 }
 
 .AddLane:hover {
-	font-size: 24px;
-	transition: 0.5s;
+	background-color: #FFFFFF;
+	color: #FF7764;
+	border: 1px solid #00BFFF;
 }
 
 /* Lanes styles */

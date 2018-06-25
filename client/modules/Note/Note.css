@@ -1,21 +1,20 @@
 .Note {
   margin: 10px 30px;
   list-style-type: none;
-  border: 1px solid white;
+  border: none;
   padding: 10px 30px 10px 10px;
-  border-radius: 10px;
   word-break: break-all;
-  background: rgba(254, 180, 37, 0.7);
+  background: #0D0F10;
   position: relative;
 }
 
 .Note button {
-  border: 2px solid orange;
-  color: orange;
+  border: 2px solid #FF7764;
+  color: #FF7764;
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #0D0F10;
   float: right;
   cursor: pointer;
   display: block;
