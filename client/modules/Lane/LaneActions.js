@@ -10,6 +10,9 @@ export const DELETE_LANE = 'DELETE_LANE';
 export const EDIT_LANE = 'EDIT_LANE';
 export const CREATE_LANES = 'CREATE_LANES';
 export const MOVE_BETWEEN_LANES = 'MOVE_BETWEEN_LANES';
+export const PUSH_TO_LANE = 'PUSH_TO_LANE';
+export const REMOVE_FROM_LANE = 'REMOVE_FROM_LANE';
+
 
 // Export Actions
 export function createLane(lane) {
@@ -18,12 +21,12 @@ export function createLane(lane) {
     lane: {
       notes: [],
       ...lane,
-    }
+    },
   };
 }
 
 export function createLaneRequest(lane) {
-  return (dispatch) => {
+  return dispatch => {
     return callApi('lanes', 'post', lane).then(res => {
       dispatch(createLane(res));
     });
@@ -38,8 +41,8 @@ export function updateLane(lane) {
 }
 
 export function updateLaneRequest(lane) {
-  return (dispatch) => {
-    return callApi(`lanes/${lane.id}`, 'put', lane).then(() => {
+  return dispatch => {
+    return callApi(`lanes/${lane.id}`, 'put', { name: lane.name, editing: lane.editing }).then(() => {
       dispatch(updateLane(lane));
     });
   };
@@ -53,7 +56,7 @@ export function deleteLane(laneId) {
 }
 
 export function deleteLaneRequest(laneId) {
-  return (dispatch) => {
+  return dispatch => {
     return callApi(`lanes/${laneId}`, 'delete').then(() => {
       dispatch(deleteLane(laneId));
     });
@@ -63,7 +66,7 @@ export function deleteLaneRequest(laneId) {
 export function editLane(laneId) {
   return {
     type: EDIT_LANE,
-    id: laneId,
+    laneId,
   };
 }
 
@@ -92,5 +95,40 @@ export function moveBetweenLanes(targetLaneId, noteId, sourceLaneId) {
     targetLaneId,
     noteId,
     sourceLaneId,
+  };
+}
+
+export function removeFromLane(sourceLaneId, noteId) {
+  return {
+    type: REMOVE_FROM_LANE,
+    sourceLaneId,
+    noteId,
+  };
+}
+
+export function pushToLane(targetLaneId, noteId) {
+  return {
+    type: PUSH_TO_LANE,
+    targetLaneId,
+    noteId,
+  };
+}
+
+export function changeLanesRequest(sourceLaneId, targetLaneId, noteId, newTask) {
+  return (dispatch) => {
+    return callApi(`notes/${noteId}`, 'delete')
+      .then(() => {
+        callApi('notes', 'post', { note: { id: noteId, task: newTask }, laneId: targetLaneId });
+      })
+      .then(() => {
+        dispatch(removeFromLane(
+          sourceLaneId,
+          noteId,
+        ));
+        dispatch(pushToLane(
+          targetLaneId,
+          noteId,
+        ));
+      });
   };
 }

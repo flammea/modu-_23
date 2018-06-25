@@ -1,7 +1,5 @@
-.delete {
-  color: blue;
-}
-
 .value {
-  color: blue;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
 }
