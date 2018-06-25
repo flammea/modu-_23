@@ -4,8 +4,8 @@ import callApi from '../../util/apiCaller';
 export const CREATE_NOTE = 'CREATE_NOTE';
 export const UPDATE_NOTE = 'UPDATE_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
-export const CREATE_NOTES = 'CREATE_NOTES';
 export const EDIT_NOTE = 'EDIT_NOTE';
+export const CREATE_NOTES = 'CREATE_NOTES';
 export const MOVE_WITHIN_LANE = 'MOVE_NOTES';
 
 // Export Actions
@@ -34,8 +34,8 @@ export function updateNote(note) {
 
 export function updateNoteRequest(note) {
   return (dispatch) => {
-    return callApi(`notes/${note.id}`, 'put', note).then(() => {
-      dispatch(updateNote(note));
+    return callApi(`notes/${note.id}`, 'put', note).then(noteResp => {
+      dispatch(updateNote(noteResp));
     });
   };
 }
@@ -50,23 +50,24 @@ export function deleteNote(noteId, laneId) {
 
 export function deleteNoteRequest(noteId, laneId) {
   return (dispatch) => {
-    return callApi(`notes/${noteId}`, 'delete', { noteId, laneId }).then(() => {
+    return callApi(`notes/${noteId}`, 'delete').then(() => {
       dispatch(deleteNote(noteId, laneId));
     });
-  };
-}
-
-export function createNotes(notesData) {
-  return {
-    type: CREATE_NOTES,
-    notes: notesData,
   };
 }
 
 export function editNote(noteId) {
   return {
     type: EDIT_NOTE,
-    id: noteId,
+    noteId,
+  };
+}
+
+
+export function createNotes(notesData) {
+  return {
+    type: CREATE_NOTES,
+    notes: notesData,
   };
 }
 
