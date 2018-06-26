@@ -8,6 +8,21 @@
   width: 370px;
 }
 
+.LaneName {
+  text-align: left;
+  padding: 20px;
+  background: #55efc4;
+  border-radius: 10px 10px 0 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+}
+
+.LaneName span {
+  padding: 5px;
+  cursor: pointer;
+}
+
 .LaneDelete {
   text-align: center;
   width: 20px;
@@ -24,29 +39,11 @@
   height: 20px;
   border: 2px solid #FF7764;
   border-radius: 50%;
-  background-color: #0D0F10;
+  background-color: #55efc4;
   color: #FF7764;
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
-}
-
-.LaneName {
-  text-align: left;
-  padding: 20px;
-  background: #0D0F10;
-  border-radius: 10px 10px 0 0;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.LaneName span {
-  padding: 5px;
-  cursor: pointer;
-}
-
-.LaneAddNote {
-  margin: 20px auto;
 }
 
 .AddLane, .LaneAddNote button {
@@ -63,7 +60,7 @@
   border-radius: 2px;
   margin: 0 auto;
   display: block;
-  border: 2px solid #FF7764;
+  border: 2px solid #55efc4;
 }
 
 .AddLane {
@@ -72,9 +69,13 @@
 	font-size: 20px;
 }
 
-.AddLane:hover {
+.LaneAddNote {
+  margin: 20px auto;
+}
+
+.AddLane:hover, .LaneAddNote button:hover {
 	background-color: #FFFFFF;
-	color: #FF7764;
+	color: #55efc4;
 	border: 1px solid #00BFFF;
 }
 

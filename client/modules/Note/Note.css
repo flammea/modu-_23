@@ -4,7 +4,7 @@
   border: none;
   padding: 10px 30px 10px 10px;
   word-break: break-all;
-  background: #0D0F10;
+  background: #636e72;
   position: relative;
 }
 
@@ -14,7 +14,7 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background-color: #0D0F10;
+  background-color: #636e72;
   float: right;
   cursor: pointer;
   display: block;
